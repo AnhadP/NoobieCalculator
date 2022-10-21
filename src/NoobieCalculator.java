@@ -18,7 +18,14 @@ public class NoobieCalculator extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         frame = new JFrame("NoobieCalculator");            //Defines the frame of the calculator.
-        frame.setSize(400, 600);
+        frame.setSize(200, 220);
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch(Exception e) {
+            System.err.println(e.getMessage());
+        }
 
         frame.setLocation(200, 200); // ??
 
@@ -28,7 +35,7 @@ public class NoobieCalculator extends JFrame implements ActionListener {
 
         textField = new JTextField(20);
 
-        JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, beq, badd, bsub, bmul, bdiv, bclr;
+        JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, beq, badd, bsub, bmul, bdiv, bclr, bdot;
 
         //        final JTextArea textArea = new JTextArea(40, 40);
         //        frame.getContentPane().add(BorderLayout.CENTER, textArea);
@@ -56,26 +63,30 @@ public class NoobieCalculator extends JFrame implements ActionListener {
 
         //Clear Button
         bclr = new JButton("C");
-
+        //Decimal point button
+        bdot = new JButton(".");
         frame.add(panel);
         //Adding Buttons to the layout
-        panel.add(b0);
+        panel.add(textField);
+        panel.add(bclr);
         panel.add(b1);
         panel.add(b2);
         panel.add(b3);
+        panel.add(badd);
         panel.add(b4);
         panel.add(b5);
         panel.add(b6);
+        panel.add(bsub);
         panel.add(b7);
         panel.add(b8);
         panel.add(b9);
-        panel.add(badd);
-        panel.add(bdiv);
         panel.add(bmul);
-        panel.add(bsub);
+        panel.add(bdot);
+        panel.add(b0);
         panel.add(beq);
-        panel.add(textField);
-        panel.add(bclr);
+        panel.add(bdiv);
+
+
 
         //Defining Action Listeners
         b0.addActionListener(nb);
@@ -94,6 +105,7 @@ public class NoobieCalculator extends JFrame implements ActionListener {
         bdiv.addActionListener(nb);
         beq.addActionListener(nb);
         bclr.addActionListener(nb);
+        bdot.addActionListener(nb);
 
 //        final JButton b2 = new JButton("2");
 //        frame.getContentPane().add(BorderLayout.SOUTH, b2);
@@ -117,6 +129,7 @@ public class NoobieCalculator extends JFrame implements ActionListener {
 //                textArea.append("Button was clicked\n");
 //            }
 //        });
+
 
         frame.setVisible(true);
     }
